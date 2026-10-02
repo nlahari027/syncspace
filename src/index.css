@@ -29,33 +29,45 @@
     color: #fff;
   }
 
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #0f0f0f; }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f0f0f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
 }
 
 /* ─── Utilities ─── */
 @layer utilities {
   .glass {
-    background-color: rgba(15,15,15,0.6);
+    background-color: rgba(15, 15, 15, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
   .glass-card {
-    background-color: rgba(255,255,255,0.04);
+    background-color: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
     border-radius: 1.5rem;
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #FDFBF7 0%, rgba(255,255,255,0.5) 100%);
+    background: linear-gradient(135deg, #FDFBF7 0%, rgba(255, 255, 255, 0.5) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -77,8 +89,15 @@
 
 /* ─── Custom Animations ─── */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .animate-pulse-slow {
@@ -86,5 +105,184 @@
 }
 
 /* ─── Scrollbar hide utility ─── */
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =========================================================
+   SYNCSPACE RESPONSIVE FIXES
+   ========================================================= */
+
+.hero-mockup-wrapper {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero-mockup-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+
+  /* Hero mockup */
+  .hero-mockup-wrapper>div {
+    border-radius: 22px !important;
+  }
+
+  /* Main video/activity grid */
+  .hero-mockup-wrapper>div>div:nth-child(2) {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+  }
+
+  /* Shared activity should occupy one column */
+  .hero-mockup-wrapper .col-span-2 {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero-mockup-wrapper {
+    width: 100%;
+  }
+
+  .hero-mockup-wrapper>div {
+    border-radius: 18px !important;
+    min-height: 0 !important;
+  }
+
+  /* Mockup header */
+  .hero-mockup-wrapper>div>div:first-child {
+    padding: 10px 12px !important;
+  }
+
+  /* Hide the desktop-style empty spacer in header */
+  .hero-mockup-wrapper>div>div:first-child>div:last-child {
+    display: none !important;
+  }
+
+  /* Header content */
+  .hero-mockup-wrapper>div>div:first-child>div:nth-child(2) {
+    gap: 6px !important;
+    padding: 5px 8px !important;
+  }
+
+  /* Main grid */
+  .hero-mockup-wrapper>div>div:nth-child(2) {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 150px 150px auto !important;
+    gap: 8px !important;
+    padding: 8px !important;
+    overflow: visible !important;
+  }
+
+  /* Video cards */
+  .hero-mockup-wrapper>div>div:nth-child(2)>div {
+    min-height: 0 !important;
+  }
+
+  /* Shared Memory Match */
+  .hero-mockup-wrapper .col-span-2 {
+    grid-column: span 1 !important;
+    min-height: 150px !important;
+  }
+
+  /* Memory Match cards become smaller */
+  .hero-mockup-wrapper .col-span-2 [style*="perspective"] {
+    width: 42px !important;
+    height: 54px !important;
+  }
+
+  .hero-mockup-wrapper .col-span-2 [style*="perspective"]>div {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Memory Match card grid */
+  .hero-mockup-wrapper .col-span-2 .grid {
+    grid-template-columns: repeat(4, 42px) !important;
+    gap: 6px !important;
+  }
+
+  /* Shared activity header */
+  .hero-mockup-wrapper .col-span-2>div:first-child {
+    padding: 8px 10px !important;
+  }
+
+  /* Mockup footer */
+  .hero-mockup-wrapper>div>div:last-child {
+    padding: 9px 12px !important;
+  }
+
+  /* Footer text */
+  .hero-mockup-wrapper>div>div:last-child span {
+    font-size: 9px !important;
+  }
+
+  /* Footer buttons */
+  .hero-mockup-wrapper>div>div:last-child button {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  /* Hero heading */
+  .hero-buttons button {
+    font-size: 15px !important;
+    padding: 13px 22px !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px) {
+  .hero-mockup-wrapper>div>div:nth-child(2) {
+    grid-template-rows: 135px 135px auto !important;
+  }
+
+  .hero-mockup-wrapper .col-span-2 [style*="perspective"] {
+    width: 36px !important;
+    height: 48px !important;
+  }
+
+  .hero-mockup-wrapper .col-span-2 .grid {
+    grid-template-columns: repeat(4, 36px) !important;
+    gap: 5px !important;
+  }
+
+  .hero-mockup-wrapper>div>div:last-child {
+    padding: 8px !important;
+  }
+
+  .hero-mockup-wrapper>div>div:last-child>div:first-child,
+  .hero-mockup-wrapper>div>div:last-child>div:last-child {
+    display: none !important;
+  }
+
+  .hero-mockup-wrapper>div>div:last-child {
+    justify-content: center !important;
+  }
+}
+
+/* Prevent horizontal overflow */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
