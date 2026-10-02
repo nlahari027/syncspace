@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
 import ModulePlayground from './components/sections/ModulePlayground';
 import PluginArchitecture from './components/sections/PluginArchitecture';
 import AudienceSection from './components/sections/AudienceSection';
-import CapabilitiesBento from './components/sections/CapabilitiesBento';
+import CapabilitiesBento from './components/sections/CapabilitiesBento.tsx';
 import FinalCTA from './components/sections/FinalCTA';
 import Footer from './components/layout/Footer';
 import BookingModal from './components/ui/BookingModal';
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-hidden selection:bg-accent-lavender/30 selection:text-white">
       <Navbar onBookDemo={() => openBookingModal('Demo')} />
-      
+
       <main>
         <Hero onBookDemo={() => openBookingModal('Demo')} />
         <ModulePlayground />
@@ -35,9 +35,9 @@ function App() {
 
       <Footer />
 
-      <BookingModal 
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
         context={bookingContext}
       />
     </div>

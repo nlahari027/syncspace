@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Mic, Video, MonitorUp, PhoneOff, Lock, Wifi } from 'lucide-react';
 
 const formatTime = (seconds: number) => {
@@ -100,7 +100,7 @@ const HeroMockup: React.FC = () => {
       <div className="flex items-center justify-between px-5 py-3 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.3)' }}>
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
-            {['#FF5F56','#FFBD2E','#27C93F'].map(c => (
+            {['#FF5F56', '#FFBD2E', '#27C93F'].map(c => (
               <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />
             ))}
           </div>
